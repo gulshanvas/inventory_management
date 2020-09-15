@@ -3,11 +3,14 @@ const baseRoute = require('./routes/index');
 const CookieHelper = require('./lib/CookieHelper');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
-const router = express.Router();
 
-
+app.use(cors({
+  credentials: true,
+  origin: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
